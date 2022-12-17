@@ -85,10 +85,21 @@ tiktokLiveConnection.on('follow', (data) => {
 })
 
 
-//tiktokLiveConnection.getRoomInfo().then(roomInfo => {
-//    console.log(roomInfo);
-//    console.log(`Stream started timestamp: ${roomInfo.create_time}, Streamer bio: ${roomInfo.owner.bio_description}`);
-//    console.log(`HLS URL: ${roomInfo.stream_url.hls_pull_url}`); // Can be played or recorded with e.g. VLC
-//}).catch(err => {
-//    console.error(err);
-//})
+tiktokLiveConnection.getRoomInfo().then(roomInfo => {
+    console.log(roomInfo);
+    console.log(`Stream started timestamp: ${roomInfo.create_time}, Streamer bio: ${roomInfo.owner.bio_description}`);
+    console.log(`HLS URL: ${roomInfo.stream_url.hls_pull_url}`); // Can be played or recorded with e.g. VLC
+}).catch(err => {
+    console.error(err);
+})
+
+
+
+tiktokLiveConnection.getAvailableGifts().then(giftList => {
+    console.log(giftList);
+    giftList.forEach(gift => {
+        console.log(`id: ${gift.id}, name: ${gift.name}, cost: ${gift.diamond_count}`)
+    });
+}).catch(err => {
+    console.error(err);
+})
